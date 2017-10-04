@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
     app: path.resolve(__dirname, 'app'),
@@ -22,6 +23,14 @@ module.exports = {
                     presets: ['es2015']
                 }
             }]
+        }, {
+            test: /\.pug$/,
+            use: ['html-loader', 'pug-html-loader']
         }]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './pages/index/index.pug'
+        })
+    ]
 }
