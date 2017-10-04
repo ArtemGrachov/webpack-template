@@ -1,6 +1,10 @@
 'use strict';
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const extractCSS = new ExtractTextPlugin({
+    filename: 'main.css'
+})
 
 const PATHS = {
     app: path.resolve(__dirname, 'app'),
@@ -24,13 +28,14 @@ module.exports = {
                 }
             }]
         }, {
-            test: /\.pug$/,
-            use: ['html-loader', 'pug-html-loader']
+            test: /\.html$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: '/'
+                }
+            }]
         }]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './pages/index/index.pug'
-        })
-    ]
+    }
 }
