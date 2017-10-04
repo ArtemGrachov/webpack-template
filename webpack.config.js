@@ -41,9 +41,15 @@ module.exports = {
                     }
                 }
             ]
+        }, {
+            test: /\.scss$/,
+            loader: ExtractTextPlugin.extract([
+                'css-loader', 'sass-loader'
+            ])
         }]
     },
     plugins: [
-        new CleanWebpackPlugin(['dist'])
+        new CleanWebpackPlugin(['dist']),
+        extractCSS
     ]
 }

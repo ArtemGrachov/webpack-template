@@ -1,5 +1,4 @@
-// import 'index.scss';
-// import './index.html';
-import './index.pug';
+ import './index.scss';
+ import './index.pug';
 
-console.log('is is index.js')
+ console.log('is is index.js')
