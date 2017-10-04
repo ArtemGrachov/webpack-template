@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin({
-    filename: 'main.css'
+    filename: 'bundle.css'
 })
 
 const PATHS = {
@@ -46,6 +46,12 @@ module.exports = {
             loader: ExtractTextPlugin.extract([
                 'css-loader', 'sass-loader'
             ])
+        }, {
+            test: /\.(jpg|png|svg)$/,
+            loader: 'file-loader',
+            options: {
+                name: 'images/[name].[ext]'
+            }
         }]
     },
     plugins: [
