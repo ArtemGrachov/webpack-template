@@ -30,13 +30,12 @@ module.exports = {
             }]
         }, {
             test: /\.pug$/,
-            use: [{
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]',
-                    outputPath: '/'
-                }
-            }]
+            use: [
+                'file-loader?name=[name].html',
+                'extract-loader',
+                'html-loader',
+                'pug-html-loader'
+            ]
         }]
     },
     plugins: [
