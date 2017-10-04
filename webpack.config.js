@@ -1,6 +1,7 @@
 'use strict';
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const extractCSS = new ExtractTextPlugin({
     filename: 'main.css'
@@ -28,7 +29,7 @@ module.exports = {
                 }
             }]
         }, {
-            test: /\.html$/,
+            test: /\.pug$/,
             use: [{
                 loader: 'file-loader',
                 options: {
@@ -37,5 +38,8 @@ module.exports = {
                 }
             }]
         }]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin(['dist'])
+    ]
 }
